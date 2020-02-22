@@ -4,8 +4,12 @@ export const GRAB_SMURFS = "GRAB_SMURFS"
 export const GRAB_SMURFS_SUCCESS = "GRAB_SMURFS_SUCCESS"
 export const GRAB_SMURFS_FAILURE = "GRAB_SMURFS_FAILURE"
 
+export const POST_SMURFS = 'POST_SMURFS'
+export const POST_SMURFS_SUCCESS = 'POST_SMURFS_SUCCESS'
+export const  POST_SMURFS_FAILURE = 'POST_SMURFS_FAILURE'
 
-export const Smurfs = () => dispatch =>{
+
+export const getSmurfs = () => dispatch =>{
 
     dispatch({type: GRAB_SMURFS});
     axios 
@@ -24,4 +28,20 @@ export const Smurfs = () => dispatch =>{
 
 }
 
-export default Smurfs;
+export const addSmurfs = newSmurf => dispatch => {
+
+    dispatch({type: POST_SMURFS});
+    axios
+        .post("http://localhost:3333/smurfs", newSmurf)
+        .then(response => {
+            console.log("Posted: ", response.data);
+            dispatch({type: POST_SMURFS_SUCCESS, payload: response.data});
+        })
+
+        .catch(error=>{
+            console.log("Error: issue with gettting the data ", error);
+            dispatch({
+                type: POST_SMURFS_FAILURE, 
+                payload:`Error: issue with gettting the data ${error}` });
+        });
+};

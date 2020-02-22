@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Smurfs} from  '../actions/Smurfs'
+import {getSmurfs} from  '../actions/Smurfs'
 import SmurfForm from './SmurfForm';
 import { connect } from "react-redux";
 
@@ -13,21 +13,21 @@ const SmurfList = props =>{
 
     const grabSmurfs = e =>{
         e.preventDefault();
-        Smurfs();
+        getSmurfs();
     };
 
-    console.log(Smurfs())
+    console.log(getSmurfs())
 
     return(
         <div>
             <div>
-                {/* {store.map(smurf => (
+                {props.smurf.map(smurf => (
                     <h3>
                         name = {smurf.name}
                         age = {smurf.age}
                         height = {smurf.height}
                     </h3>
-                ))} */}
+                ))}
                 <button onClick={grabSmurfs}>Find em!</button>
                 <SmurfForm addSmurf={props.addSmurf}/>
             </div>
@@ -35,4 +35,4 @@ const SmurfList = props =>{
     );
 }
 
-export default connect(mapProps, {Smurfs})(SmurfList);
+export default connect(mapProps, {getSmurfs})(SmurfList);
