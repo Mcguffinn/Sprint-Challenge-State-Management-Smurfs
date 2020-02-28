@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {getSmurfs} from  '../actions/Smurfs'
 import SmurfForm from './SmurfForm';
 import { connect } from "react-redux";
@@ -12,8 +12,7 @@ const mapProps = state => ({
 const SmurfList = props =>{
 
     const grabSmurfs = e =>{
-        e.preventDefault();
-        getSmurfs();
+        props.getSmurfs();
     };
 
     console.log(getSmurfs())
@@ -28,7 +27,7 @@ const SmurfList = props =>{
                         height = {smurf.height}
                     </h3>
                 ))}
-                <button onClick={grabSmurfs}>Find em!</button>
+                <button onClick={()=> grabSmurfs()}>Find em!</button>
                 <SmurfForm addSmurf={props.addSmurf}/>
             </div>
         </div>

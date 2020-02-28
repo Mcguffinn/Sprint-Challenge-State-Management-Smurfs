@@ -1,8 +1,8 @@
-import {
-    GRAB_SMURFS,
-    GRAB_SMURFS_SUCCESS,
-    GRAB_SMURFS_FAILURE,
-} from "../actions/Smurfs";
+// import {
+//     GRAB_SMURFS,
+//     GRAB_SMURFS_SUCCESS,
+//     GRAB_SMURFS_FAILURE,
+// } from "../actions/Smurfs";
 
 const init = {
     smurf: [],
@@ -12,20 +12,20 @@ const init = {
 
 function smurfReducer(state = init, action){
     switch(action.type){
-        case GRAB_SMURFS:
+        case "GRAB_SMURFS":
             return {
                 ...state,
                 error: '',
                 grabbing: true
             };
-        case GRAB_SMURFS_SUCCESS:
+        case "GRAB_SMURFS_SUCCESS":
             return {
                 ...state,
                 error: '',
                 grabbing: false,
                 smurf: action.payload 
             };
-        case GRAB_SMURFS_FAILURE:
+        case "GRAB_SMURFS_FAILURE":
             return{
                 ...state,
                 error: action.payload,
