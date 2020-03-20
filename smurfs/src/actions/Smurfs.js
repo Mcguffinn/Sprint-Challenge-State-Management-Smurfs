@@ -44,6 +44,8 @@ export const addSmurfs = newSmurf => dispatch => {
 };
 
 export const deleteSmurf = (id) => dispatch => {
+
+    console.log("its called");
     axios
         .delete(`http://localhost:3333/smurfs/${id}`)
         .then(response =>{
@@ -51,6 +53,7 @@ export const deleteSmurf = (id) => dispatch => {
             dispatch({
                 type: "DELETE_SMURFS",
                 payload: response.data});
+            console.log(dispatch);
         })
         .catch(err => {
             console.log('smurf was not deleted', err)

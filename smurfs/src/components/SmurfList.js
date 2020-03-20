@@ -15,6 +15,10 @@ const SmurfList = (props) =>{
         props.getSmurfs();
     };
     
+    const deleteSmurf = (e) =>{
+        props.deleteSmurf(e);
+    };
+
 
     return(
         <div>
@@ -37,4 +41,4 @@ const SmurfList = (props) =>{
     );
 }
 
-export default connect(mapProps, {getSmurfs})(SmurfList);
+export default connect(mapProps, {getSmurfs,deleteSmurf})(SmurfList);
