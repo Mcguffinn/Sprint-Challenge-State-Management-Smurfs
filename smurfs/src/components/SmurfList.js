@@ -1,5 +1,5 @@
 import React from "react";
-import {getSmurfs} from  '../actions/Smurfs'
+import {getSmurfs, deleteSmurf} from  '../actions/Smurfs'
 import SmurfForm from './SmurfForm';
 import { connect } from "react-redux";
 
@@ -9,25 +9,28 @@ const mapProps = state => ({
     error: state.error
 })
 
-const SmurfList = props =>{
+const SmurfList = (props) =>{
 
     const grabSmurfs = e =>{
         props.getSmurfs();
     };
-
-    console.log(getSmurfs())
+    
 
     return(
         <div>
             <div>
                 {props.smurf.map(smurf => (
-                    <h3>
-                        name = {smurf.name}
-                        age = {smurf.age}
-                        height = {smurf.height}
-                    </h3>
+                    <div>
+                        <p>name = {smurf.name}</p>
+                        <p>age = {smurf.age}</p>
+                        <p>height = {smurf.height}</p>
+                        {console.log(smurf.id)}
+                        <button onClick={()=> deleteSmurf(smurf.id)}>delete them!</button>
+                    </div>
+                    
                 ))}
                 <button onClick={()=> grabSmurfs()}>Find em!</button>
+                
                 <SmurfForm addSmurf={props.addSmurf}/>
             </div>
         </div>
