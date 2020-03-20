@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {connect} from 'react-redux';
 import {addSmurfs,} from '../actions/Smurfs'
 
-const SmurfForm = props => {
+const SmurfForm = (props) => {
   const [newSmurf, setSmurf] = useState({
     name: "",
     age: "",
@@ -51,18 +51,7 @@ const SmurfForm = props => {
         <button type="submit">Make your own Smurf</button>
         
       </form>
-      {/* <form>
-        <div>
-          <input
-          type="text"
-          name="id"
-          placeholder="smurfid"
-          onChange={handleChanges}
-          value={newSmurf.id}
-          />
-        </div>
-        <button onClick={()=> deleteSmurf(props.smurf.id)}>or delete them!</button>
-      </form> */}
+
     </div>
   );
 };
